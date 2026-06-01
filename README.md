@@ -4,7 +4,7 @@
 ## 8. Implementation of passing parameters.
 # Ex.No:16
   Implement a C program to read a date in the format DD/MM/YYYY and determine whether the entered date is valid. The program should check the correctness of the day, month, and year, including leap year calculations for February.
-# Date : 
+# Date :01.06.2026 
 # Aim:
  To implement a C program that validates a user-entered date using a function without parameters and without return value, ensuring the correctness of day, month, year, and leap year conditions.
 # Algorithm:
@@ -41,7 +41,61 @@
 ### Step 14: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int main() {
+    int day, month, year;
+    int isLeap = 0, valid = 1;
+
+    printf("Enter date (DD/MM/YYYY): ");
+    scanf("%d/%d/%d", &day, &month, &year);
+
+    // Check year
+    if(year <= 0)
+        valid = 0;
+
+    // Check month
+    if(month < 1 || month > 12)
+        valid = 0;
+
+    // Leap year check
+    if((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+        isLeap = 1;
+
+    // Days check
+    if(valid == 1) {
+        if(month == 2) {
+            if(isLeap) {
+                if(day < 1 || day > 29)
+                    valid = 0;
+            } else {
+                if(day < 1 || day > 28)
+                    valid = 0;
+            }
+        }
+        else if(month == 4 || month == 6 || month == 9 || month == 11) {
+            if(day < 1 || day > 30)
+                valid = 0;
+        }
+        else {
+            if(day < 1 || day > 31)
+                valid = 0;
+        }
+    }
+
+    // Output result
+    if(valid)
+        printf("Valid Date\n");
+    else
+        printf("Invalid Date\n");
+
+    return 0;
+}
+```
 # Output:
+<img width="582" height="232" alt="image" src="https://github.com/user-attachments/assets/2fd23f8e-3905-4f4a-9e7d-080a9c3bcb8e" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -50,7 +104,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-4- Module 4 - FoC
 # Ex.No:17
   Develop a C program to read two numbers from the user and determine the maximum and minimum values. Use user-defined functions with arguments and return values—one function to find the maximum (max()) and another to find the minimum (min()).
-# Date : 
+# Date : 01.06.2026
 # Aim:
  To develop a C program that uses functions with parameters and return values to compute and display the maximum and minimum of two user-entered numbers.
 # Algorithm:
@@ -89,6 +143,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 13: 
   Stop
 # Program:
+
 # Output:
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
